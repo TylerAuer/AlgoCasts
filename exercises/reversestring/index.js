@@ -40,13 +40,13 @@
 //
 // SOLUTION #2A - Cleaner For...of
 //
-function reverse(str) {
-  let revStr = "";
-  for (let char of str) {
-    revStr = char + revStr;
-  }
-  return revStr;
-}
+// function reverse(str) {
+//   let revStr = "";
+//   for (let char of str) {
+//     revStr = char + revStr;
+//   }
+//   return revStr;
+// }
 
 //
 // SOLUTION #3 -- Recursive slicing off the end
@@ -64,5 +64,15 @@ function reverse(str) {
 //   pop(str);
 //   return revStr;
 // }
+
+//
+// SOLUTION #4 -- Array.reverse().reduce()
+//
+function reverse(str) {
+  return str
+    .split("")
+    .reverse()
+    .reduce((revStr, nextChar) => revStr + nextChar);
+}
 
 module.exports = reverse;
