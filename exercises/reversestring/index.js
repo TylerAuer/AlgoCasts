@@ -10,15 +10,22 @@
 // SOLUTION #1 //
 //
 // Turns into an array then reverse and turns back into a string
-function reverse(str) {
-  // Converts to array so .reverse() can be used
-  const charArr = str.split("");
-  // Reverses arr in place
-  charArr.reverse();
-  // Concatenates letters into single string, returns
-  return charArr.join("");
-}
+// function reverse(str) {
+//   // Converts to array so .reverse() can be used
+//   const charArr = str.split("");
+//   // Reverses arr in place
+//   charArr.reverse();
+//   // Concatenates letters into single string, returns
+//   return charArr.join("");
+// }
 
+//
+// SOLUTION #1A //
+//
+// Turns into an array then reverse and turns back into a string
+function reverse(str) {
+  return str.split("").reverse().join("");
+}
 //
 // SOLUTION #2 //
 //
