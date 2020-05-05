@@ -69,10 +69,7 @@
 // SOLUTION #4 -- Array.reverse().reduce()
 //
 function reverse(str) {
-  return str
-    .split("")
-    .reverse()
-    .reduce((revStr, nextChar) => revStr + nextChar);
+  return str.split("").reduce((revStr, nextChar) => nextChar + revStr);
 }
 
 module.exports = reverse;
