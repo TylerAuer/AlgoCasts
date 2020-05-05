@@ -7,9 +7,8 @@
 //   reverse('Greetings!') === '!sgniteerG'
 
 //
-// SOLUTION #1 //
+// SOLUTION #1 - Use Array.reverse()
 //
-// Turns into an array then reverse and turns back into a string
 // function reverse(str) {
 //   // Converts to array so .reverse() can be used
 //   const charArr = str.split("");
@@ -20,14 +19,14 @@
 // }
 
 //
-// SOLUTION #1A //
+// SOLUTION #1A - One line solution (cleaner?)
 //
-// Turns into an array then reverse and turns back into a string
-function reverse(str) {
-  return str.split("").reverse().join("");
-}
+// function reverse(str) {
+//   return str.split("").reverse().join("");
+// }
+
 //
-// SOLUTION #2 //
+// SOLUTION #2 - Classic for loop
 //
 // Pull last character from string, move to a new string
 // function reverse(str) {
@@ -37,6 +36,19 @@ function reverse(str) {
 //   }
 //   return revStr;
 // }
+
+//
+// SOLUTION #2A - Cleaner For...of
+//
+function reverse(str) {
+  let revStr = "";
+
+  for (let char of str) {
+    revStr = char + revStr;
+  }
+
+  return revStr;
+}
 
 //
 // SOLUTION #3 //
