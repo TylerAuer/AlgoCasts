@@ -10,27 +10,28 @@
 // SOLUTION #1 //
 //
 // Turns into an array then reverse and turns back into a string
-// function reverse(str) {
-//   let charArr = str.split("");
-//   charArr.reverse();
-//   let revStr = "";
-//   for (let i = 0; i < charArr.length; i++) {
-//     revStr += charArr[i];
-//   }
-//   return revStr;
-// }
+function reverse(str) {
+  // Converts to array so .reverse() can be used
+  const charArr = str.split("");
+  // Reverses arr in place
+  charArr.reverse();
+  // Concatenates letters into single string
+  const revStr = charArr.join("");
+
+  return revStr;
+}
 
 //
 // SOLUTION #2 //
 //
 // Pull last character from string, move to a new string
-function reverse(str) {
-  let revStr = "";
-  for (let i = str.length - 1; i >= 0; i--) {
-    revStr += str[i];
-  }
-  return revStr;
-}
+// function reverse(str) {
+//   let revStr = "";
+//   for (let i = str.length - 1; i >= 0; i--) {
+//     revStr += str[i];
+//   }
+//   return revStr;
+// }
 
 //
 // SOLUTION #3 //
