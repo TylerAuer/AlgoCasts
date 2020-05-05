@@ -15,10 +15,8 @@ function reverse(str) {
   const charArr = str.split("");
   // Reverses arr in place
   charArr.reverse();
-  // Concatenates letters into single string
-  const revStr = charArr.join("");
-
-  return revStr;
+  // Concatenates letters into single string, returns
+  return charArr.join("");
 }
 
 //
