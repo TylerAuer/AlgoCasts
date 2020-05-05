@@ -42,18 +42,15 @@
 //
 function reverse(str) {
   let revStr = "";
-
   for (let char of str) {
     revStr = char + revStr;
   }
-
   return revStr;
 }
 
 //
-// SOLUTION #3 //
+// SOLUTION #3 -- Recursive slicing off the end
 //
-// Recursive using slice
 // function reverse(str) {
 //   let revStr = "";
 //   function pop(str2) {
@@ -67,11 +64,5 @@ function reverse(str) {
 //   pop(str);
 //   return revStr;
 // }
-
-// My basic tests
-// console.log(reverse("Hello World!"));
-// console.log(reverse("      Testing"));
-// console.log(reverse("Hello          "));
-// console.log(reverse("Go hang a salami I'm a lasagna hog."));
 
 module.exports = reverse;
