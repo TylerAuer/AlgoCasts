@@ -9,12 +9,21 @@
 //   reverseInt(-90) === -9
 
 // 1 - Convert to array, reverse
+// function reverseInt(n) {
+//   const reversed = parseInt(
+//     Math.abs(n).toString().split("").reverse().join("")
+//   );
+
+//   return n < 0 ? -1 * reversed : reversed;
+// }
+
+// 1A - Add Math.sign to make return line simpler
 function reverseInt(n) {
   const reversed = parseInt(
     Math.abs(n).toString().split("").reverse().join("")
   );
 
-  return n < 0 ? -1 * reversed : reversed;
+  return reversed * Math.sign(n);
 }
 
 module.exports = reverseInt;
