@@ -1,1 +1,4 @@
 .DS_Store
+
+# Ignores the debugger launch config file
+/.vscode
