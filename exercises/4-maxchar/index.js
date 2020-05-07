@@ -6,37 +6,35 @@
 // maxChar("apple 1231111") === "1"
 // maxChar("bbaa") === "ab" not "ba"
 
-// 1 - Build Object
+// 1 - Build Object - O(2n + sort time)
 function maxChar(str) {
   const arr = str.split("");
-
   const charCounts = {};
+
   for (char of arr) {
     // if key exists => increment
     if (charCounts[char]) {
       charCounts[char] += 1;
+
       // if key doesn't exist => create
     } else {
       charCounts[char] = 1;
     }
   }
-  // determine max count
+
   let maxCount = 0;
+  let maxArr = [];
+
   for (char in charCounts) {
     if (charCounts[char] > maxCount) {
       maxCount = charCounts[char];
-    }
-  }
-  const maxArr = [];
-  // build arr then str of maxChar(s)
-  for (char in charCounts) {
-    if (charCounts[char] === maxCount) {
+      maxArr = [char];
+    } else if (charCounts[char] === maxCount) {
       maxArr.push(char);
     }
   }
+
   return maxArr.sort().join("");
 }
-
-console.log(maxChar("FFFaaabbbCCC"));
 
 module.exports = maxChar;
