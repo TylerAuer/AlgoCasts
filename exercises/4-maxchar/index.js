@@ -37,4 +37,12 @@ function maxChar(str) {
   return maxArr.sort().join("");
 }
 
+/////////////////////
+// Revisions to make
+/////////////////////
+
+// use for...of straight from string at the start
+// simplify the if, else when building object with ternary operation ? :
+// simplify the if, else using || => charCounts[char]+= 1 || charCounts[char] = 1
+
 module.exports = maxChar;
