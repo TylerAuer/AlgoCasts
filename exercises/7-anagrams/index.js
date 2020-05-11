@@ -74,7 +74,7 @@
 //   return true;
 // }
 
-// 3 - Turn into arrays, sort, and ===
+// 3 - Turn into arrays, sort, and compare with ===
 function anagrams(stringA, stringB) {
   // Removes nonChars, makes lowercase,
   // turns to array, sorts, turns to string
@@ -82,7 +82,8 @@ function anagrams(stringA, stringB) {
     return str.replace(/[\W]/g, "").toLowerCase().split("").sort().join();
   };
 
-  return genCharStr(stringA) === genCharStr(stringB) ? true : false;
+  // Returns true if they match, else false
+  return genCharStr(stringA) === genCharStr(stringB);
 }
 
 anagrams("Whoa! Hi!", "Hi! Whoa!");
