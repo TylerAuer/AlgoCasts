@@ -45,37 +45,44 @@
 //   return true;
 // }
 
-// 2 - Revised using for...in and comparing the lenght of the Object.keys()
-// instead of comparing string lengths
+// // 2 - Revised using for...in and comparing the lenght of the Object.keys()
+// // instead of comparing string lengths
+// function anagrams(stringA, stringB) {
+//   const makeCharMap = (str) => {
+//     const charMap = {};
+//     for (let char of str.replace(/[\W]/g, "").toLowerCase()) {
+//       charMap[char] = charMap[char] + 1 || 1;
+//     }
+//     return charMap;
+//   };
 
+//   const aMap = makeCharMap(stringA);
+//   const bMap = makeCharMap(stringB);
+
+//   // Check that they have the same number of keys
+//   if (Object.keys(aMap).length !== Object.keys(bMap).length) {
+//     return false;
+//   }
+
+//   // Check the each char appears the same number of times
+//   for (let char in aMap) {
+//     if (aMap[char] !== bMap[char]) {
+//       return false;
+//     }
+//   }
+
+//   return true;
+// }
+
+// 3 - Turn into arrays, sort, and ===
 function anagrams(stringA, stringB) {
-  const makeCharMap = (str) => {
-    const charMap = {};
-    for (let char of str.replace(/[\W]/g, "").toLowerCase()) {
-      charMap[char] = charMap[char] + 1 || 1;
-    }
-    return charMap;
+  // Removes nonChars, makes lowercase,
+  // turns to array, sorts, turns to string
+  const genCharStr = (str) => {
+    return str.replace(/[\W]/g, "").toLowerCase().split("").sort().join();
   };
 
-  const aMap = makeCharMap(stringA);
-  const bMap = makeCharMap(stringB);
-
-  console.log(aMap);
-  console.log(bMap);
-
-  // Check that they have the same number of keys
-  if (Object.keys(aMap).length !== Object.keys(bMap).length) {
-    return false;
-  }
-
-  // Check the each char appears the same number of times
-  for (let char in aMap) {
-    if (aMap[char] !== bMap[char]) {
-      return false;
-    }
-  }
-
-  return true;
+  return genCharStr(stringA) === genCharStr(stringB) ? true : false;
 }
 
 anagrams("Whoa! Hi!", "Hi! Whoa!");
