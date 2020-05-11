@@ -47,6 +47,7 @@ function chunk(array, size) {
 }
 
 // Solution 3 - Use slice instead of splice so that the original array is not modified. Adjust the index then in the while...loop
+// TODO: Redo this with slice so that origArr can be used without mutating
 
 console.log(chunk([1, 2, 3, 4], 2));
 console.log(chunk([1, 2, 3, 4, 5], 2));
