@@ -17,6 +17,19 @@
 //       '### '
 //       '####'
 
-function steps(n) {}
+// 1 - 2x for loops
+function steps(n) {
+  for (let lvl = 1; lvl <= n; lvl++) {
+    let nextLine = "";
+    for (let i = 1; i <= n; i++) {
+      if (i <= lvl) {
+        nextLine += "#";
+      } else {
+        nextLine += " ";
+      }
+    }
+    console.log(nextLine);
+  }
+}
 
 module.exports = steps;
