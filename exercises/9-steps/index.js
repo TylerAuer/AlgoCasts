@@ -17,19 +17,17 @@
 //       '### '
 //       '####'
 
-// 1 - 2x for loops
+// 1 - 2x For loops
 function steps(n) {
   for (let lvl = 1; lvl <= n; lvl++) {
     let nextLine = "";
     for (let i = 1; i <= n; i++) {
-      if (i <= lvl) {
-        nextLine += "#";
-      } else {
-        nextLine += " ";
-      }
+      i <= lvl ? (nextLine += "#") : (nextLine += " ");
     }
     console.log(nextLine);
   }
 }
+
+// 2 - recursion
 
 module.exports = steps;
