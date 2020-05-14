@@ -16,17 +16,52 @@
 //     [10,  9,  8, 7]]
 
 function matrix(n) {
-  let xDir = "right";
-  let yDir = "down";
-
-  // Make an NxN arr full of 0
+  // Make an NxN arr full of 0's
   const matrix = [];
-  matrix.fill(0, 1, n);
-  console.log(matrix);
+  for (let i = 0; i < n; i++) {
+    const subArr = [];
+    for (let j = 0; j < n; j++) {
+      subArr.push(0);
+    }
+    matrix.push(subArr);
+  }
 
-  // for (let i = 1; i <= n; i++) {
-  //   // walk through the NxN arrays, pushing the
-  // }
+  let row = 0;
+  let col = -1; // -1 allows the col++ to run before value assignment into matrix
+  let counter = 1; // Tracks 1 through n
+
+  // Tracks the direction you are moving
+  const dirArr = ["R", "D", "L", "U"];
+  let dirIndex = 0;
+
+  for (let i = 2 * n; i > 0; i--) {
+    // Move tracker is the number of steps to move in the current direction
+    // if n = 5 --> 5,4,4,3,3,2,2,1,0
+    let moveTracker = Math.floor(i / 2);
+
+    while (moveTracker > 0) {
+      switch (dirArr[dirIndex]) {
+        case "R":
+          col++;
+          break;
+        case "D":
+          row++;
+          break;
+        case "L":
+          col--;
+          break;
+        case "U":
+          row--;
+          break;
+      }
+      matrix[row][col] = counter;
+      moveTracker--;
+      counter++;
+    }
+    dirIndex = (dirIndex + 1) % 4;
+  }
+
+  return matrix;
 }
 
 module.exports = matrix;
