@@ -24,6 +24,7 @@
 function vowels(str) {
   let vowelCount = 0;
   // Doesn't have to be an arr. str.includes() is a helper function too
+  // Array is clearer though because you can use substrings like ["a", "hat", ...]
   vowels = "aeiou";
 
   for (let char of str.toLowerCase()) {
