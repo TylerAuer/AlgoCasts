@@ -64,4 +64,6 @@ function matrix(n) {
   return matrix;
 }
 
+// TODO: Implement the instructors solution with the bounds as variables the scrunch in
+
 module.exports = matrix;
