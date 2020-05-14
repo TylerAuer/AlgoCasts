@@ -31,6 +31,4 @@ function pyramid(n, lvl = 1) {
   pyramid(n, lvl + 1);
 }
 
-// 2 - Looping
-
 module.exports = pyramid;
