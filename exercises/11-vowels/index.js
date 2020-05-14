@@ -20,13 +20,27 @@
 //   return vowelCount;
 // }
 
-// 2 - Solve with regex
+// 1A - Includes works on strings
 function vowels(str) {
-  // .match() returns null if no matches found
-  const vowels = str.toLowerCase().match(/[aeiou]/g);
+  let vowelCount = 0;
+  // Doesn't have to be an arr. str.includes() is a helper function too
+  vowels = "aeiou";
 
-  // if vowels === null return 0
-  return vowels ? vowels.length : 0;
+  for (let char of str.toLowerCase()) {
+    if (vowels.includes(char)) {
+      vowelCount++;
+    }
+  }
+  return vowelCount;
 }
+
+// 2 - Solve with regex
+// function vowels(str) {
+//   // .match() returns null if no matches found
+//   const vowels = str.toLowerCase().match(/[aeiou]/g);
+
+//   // if vowels === null return 0
+//   return vowels ? vowels.length : 0;
+// }
 
 module.exports = vowels;
