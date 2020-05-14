@@ -15,6 +15,18 @@
 //     [11, 16, 15, 6],
 //     [10,  9,  8, 7]]
 
-function matrix(n) {}
+function matrix(n) {
+  let xDir = "right";
+  let yDir = "down";
+
+  // Make an NxN arr full of 0
+  const matrix = [];
+  matrix.fill(0, 1, n);
+  console.log(matrix);
+
+  // for (let i = 1; i <= n; i++) {
+  //   // walk through the NxN arrays, pushing the
+  // }
+}
 
 module.exports = matrix;
