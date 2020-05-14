@@ -28,22 +28,34 @@
 //   }
 // }
 
-// 2 - recursion
-function steps(n) {
-  const recSteps = (lvl, len) => {
-    const pound = "#";
-    const space = " ";
+// 2 - Recursion
+// function steps(n) {
+//   const recSteps = (lvl, len) => {
+//     const pound = "#";
+//     const space = " ";
 
-    console.log(pound.repeat(len - lvl + 1) + space.repeat(lvl - 1));
-    // Stop if on level 1, else recursively call recSteps
+//     console.log(pound.repeat(len - lvl + 1) + space.repeat(lvl - 1));
+//     // Stop if on level 1, else recursively call recSteps
 
-    if (lvl > 1) {
-      recSteps(lvl - 1, len);
-    }
+//     if (lvl > 1) {
+//       recSteps(lvl - 1, len);
+//     }
+//     return;
+//   };
+
+//   recSteps(n, n);
+// }
+
+// 3 - Better Recursion
+function steps(n, lvl = 1) {
+  // Base Case
+  if (lvl > n) {
     return;
-  };
+  }
 
-  recSteps(n, n);
+  // Recursive Case
+  console.log("#".repeat(lvl) + " ".repeat(n - lvl));
+  steps(n, lvl + 1);
 }
 
 module.exports = steps;
