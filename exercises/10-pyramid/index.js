@@ -14,6 +14,21 @@
 //       ' ### '
 //       '#####'
 
-function pyramid(n) {}
+// 1 - Recursive
+function pyramid(n, lvl = 1) {
+  // Base Case
+  if (lvl > n) {
+    return;
+  }
+
+  // Recursive Case
+  const width = 2 * n - 1; // number of chars in each lvl
+  const pounds = 2 * lvl - 1;
+  const spacesPerSide = (width - pounds) / 2;
+  console.log(
+    " ".repeat(spacesPerSide) + "#".repeat(pounds) + " ".repeat(spacesPerSide)
+  );
+  pyramid(n, lvl + 1);
+}
 
 module.exports = pyramid;
