@@ -31,23 +31,35 @@
 // }
 
 // Solution 2 - Use splice instead of for loop (cleaner)
+// function chunk(array, size) {
+//   const origArr = array;
+//   const returnArr = [];
+
+//   while (origArr.length >= size) {
+//     returnArr.push(origArr.splice(0, size));
+//   }
+
+//   if (origArr.length > 0) {
+//     returnArr.push(origArr);
+//   }
+
+//   return returnArr;
+// }
+
+// Solution 3 - Use slice
 function chunk(array, size) {
-  const origArr = array;
-  const returnArr = [];
+  chunkedArr = [];
 
-  while (origArr.length >= size) {
-    returnArr.push(origArr.splice(0, size));
+  // Still works when array.length is not multiple of size
+  // because when the second index of slice is out of range
+  // it just keeps to the end of the array. For example:
+  // console.log([0, 1, 2, 3].slice(0, 100)); // [0, 1, 2, 3]
+  for (let i = 0; i < array.length; i += size) {
+    chunkedArr.push(array.slice(i, i + size));
   }
 
-  if (origArr.length > 0) {
-    returnArr.push(origArr);
-  }
-
-  return returnArr;
+  return chunkedArr;
 }
-
-// Solution 3 - Use slice instead of splice so that the original array is not modified. Adjust the index then in the while...loop
-// TODO: Redo this with slice so that origArr can be used without mutating
 
 console.log(chunk([1, 2, 3, 4], 2));
 console.log(chunk([1, 2, 3, 4, 5], 2));
