@@ -28,20 +28,74 @@
 //   return curFib;
 // }
 
-// Recursive Solution
+// Recursive Solution - O(2^n) "exponential"
+// function fib(n) {
+//   // Base Case:
+//   if (n < 2) {
+//     return n;
+//   }
+
+//   // Recursive Case
+//   // Calls over and over until reaches fib(0) or fib(1) which
+//   // return 0 or 1. Those values are then added (really just counting the fib(1)s)
+//   // back up the calls
+//   // A tree diagram with fib(5) at the top splitting to
+//   // fib(4) and fib(3) illustrates this well
+//   return fib(n - 1) + fib(n - 2);
+// }
+
+// Memoization function
+function memoize(fn) {
+  // QUESTION: Why doesn't this cash need to be in the function
+  // QUESTION: How is n passed into this ex: fib(100)
+  const cache = {};
+  return function (...args) {
+    if (cache[args]) {
+      return cache[args];
+    }
+
+    // QUESTION: WHAT?!
+    // function.protype.apply( thisArg, [argsArr] )
+
+    // MDN: "The apply() method calls a function with a given this value,
+    //and arguments provided as an array (or an array-like object)."
+    const result = fn.apply(this, args);
+    // QUESTION: MDN docs use null like this:
+    // const result = fn.apply(null, args);
+    // see bottom of file for part of output for console.log(this)
+    cache[args] = result;
+
+    return result;
+  };
+}
+
 function fib(n) {
-  // Base Case:
   if (n < 2) {
     return n;
   }
 
-  // Recursive Case
-  // Calls over and over until reaches fib(0) or fib(1) which
-  // return 0 or 1. Those values are then added (really just counting the fib(1)s)
-  // back up the calls
-  // A tree diagram with fib(5) at the top splitting to
-  // fib(4) and fib(3) illustrates this well
   return fib(n - 1) + fib(n - 2);
 }
 
+fib = memoize(fib);
+
+fib(100);
+
 module.exports = fib;
+
+/**
+ The output was many, many copies of this! 
+
+* Object [global] {
+  global: [Circular],
+  clearInterval: [Function: clearInterval],
+  clearTimeout: [Function: clearTimeout],
+  setInterval: [Function: setInterval],
+  setTimeout: [Function: setTimeout] { [Symbol(util.promisify.custom)]: [Function] },
+  queueMicrotask: [Function: queueMicrotask],
+  clearImmediate: [Function: clearImmediate],
+  setImmediate: [Function: setImmediate] {
+    [Symbol(util.promisify.custom)]: [Function]
+  }
+}
+ */
