@@ -45,41 +45,54 @@
 // }
 
 // Memoization function
-function memoize(fn) {
-  // QUESTION: Why doesn't this cash need to be in the function
-  // QUESTION: How is n passed into this ex: fib(100)
-  const cache = {};
-  return function (...args) {
-    if (cache[args]) {
-      return cache[args];
-    }
+// function memoize(fn) {
+//   // QUESTION: Why doesn't this cash need to be in the function
+//   // QUESTION: How is n passed into this ex: fib(100)
+//   const cache = {};
+//   return function (...args) {
+//     if (cache[args]) {
+//       return cache[args];
+//     }
 
-    // QUESTION: WHAT?!
-    // function.protype.apply( thisArg, [argsArr] )
+//     // QUESTION: WHAT?!
+//     // function.protype.apply( thisArg, [argsArr] )
 
-    // MDN: "The apply() method calls a function with a given this value,
-    //and arguments provided as an array (or an array-like object)."
-    const result = fn.apply(this, args);
-    // QUESTION: MDN docs use null like this:
-    // const result = fn.apply(null, args);
-    // see bottom of file for part of output for console.log(this)
-    cache[args] = result;
+//     // MDN: "The apply() method calls a function with a given this value,
+//     //and arguments provided as an array (or an array-like object)."
+//     const result = fn.apply(this, args);
+//     // QUESTION: MDN docs use null like this:
+//     // const result = fn.apply(null, args);
+//     // see bottom of file for part of output for console.log(this)
+//     cache[args] = result;
 
-    return result;
-  };
-}
+//     return result;
+//   };
+// }
 
+// function fib(n) {
+//   if (n < 2) {
+//     return n;
+//   }
+
+//   return fib(n - 1) + fib(n - 2);
+// }
+
+// fib = memoize(fib);
+
+fibCache = {};
 function fib(n) {
-  if (n < 2) {
-    return n;
+  if (fibCache[n]) {
+    return fibCache[n];
   }
 
-  return fib(n - 1) + fib(n - 2);
+  if (n < 2) {
+    fibCache[n] = n;
+  } else {
+    fibCache[n] = fib(n - 1) + fib(n - 2);
+  }
+
+  return fibCache[n];
 }
-
-fib = memoize(fib);
-
-fib(100);
 
 module.exports = fib;
 
