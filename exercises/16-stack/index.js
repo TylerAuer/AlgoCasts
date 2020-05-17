@@ -10,6 +10,34 @@
 //   s.pop(); // returns 2
 //   s.pop(); // returns 1
 
-class Stack {}
+class Stack {
+  constructor() {
+    // indexOf(0) is the TOP of the stack
+    // Stacks are first in last out
+    this.data = [];
+  }
+
+  /**
+   *
+   * @param {element} record - element added to the top of the stack
+   */
+  push(record) {
+    this.data.unshift(record);
+  }
+
+  /**
+   * Removes element at the top of the stack and returns in
+   */
+  pop() {
+    return this.data.shift();
+  }
+
+  /**
+   * Returns the element at the top of the stack without removing it from stack
+   */
+  peek() {
+    return this.data[0];
+  }
+}
 
 module.exports = Stack;
