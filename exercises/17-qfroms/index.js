@@ -12,8 +12,41 @@
 //     q.remove(); // returns 1
 //     q.remove(); // returns 2
 
-const Stack = require('./stack');
+const Stack = require("./stack");
 
-class Queue {}
+class Queue {
+  constructor() {
+    this.data = new Stack();
+  }
+
+  add(record) {
+    // Placeholder stack for reversing
+    const tempStack = new Stack();
+
+    // Moves all elems form one stack to another
+    const stackSwapper = (start, end) => {
+      while (start.peek()) {
+        end.push(start.pop());
+      }
+    };
+
+    // move every elem into tempStack
+    stackSwapper(this.data, tempStack);
+
+    // add record to top of tempStack
+    tempStack.push(record);
+
+    // move every elem from tempStack to newStack
+    stackSwapper(tempStack, this.data);
+  }
+
+  peek() {
+    return this.data.peek();
+  }
+
+  remove() {
+    return this.data.pop();
+  }
+}
 
 module.exports = Queue;
