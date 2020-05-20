@@ -42,14 +42,34 @@ class Tree {
     while (queue.length) {
       // Grab the "first-in" node from queue
       const node = queue.shift();
-      // Apply the user's functions to the node
-      fn(node);
       // Add of the node's children to the queue
       queue.push(...node.children);
+      // Apply the user's functions to the node
+      // Do this second in case the function modifies the node
+      fn(node);
     }
   }
 
-  traverseDF(fn) {}
+  // // Recursive solution
+  // traverseDF(fn) {
+  //   const recursiveTraverse = (node) => {
+  //     fn(node);
+  //     node.children.forEach((child) => recursiveTraverse(child));
+  //   };
+
+  //   recursiveTraverse(this.root);
+  // }
+
+  // Nearly identical to the breadth first solution except,
+  // you use a stack (FIFO) to determine which node to process
+  traverseDF(fn) {
+    const stack = [this.root];
+    while (stack.length) {
+      const node = stack.shift();
+      stack.unshift(...node.children);
+      fn(node);
+    }
+  }
 }
 
 module.exports = { Tree, Node };
