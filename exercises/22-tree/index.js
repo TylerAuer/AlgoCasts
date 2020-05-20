@@ -27,6 +27,21 @@ class Node {
   }
 }
 
-class Tree {}
+class Tree {
+  constructor() {
+    this.root = null;
+  }
+
+  traverseBF(fn) {
+    const queue = [this.root];
+    while (queue.length > 0) {
+      const node = queue.shift();
+      fn(node);
+      node.children.forEach((child) => queue.push(child));
+    }
+  }
+
+  traverseDF(fn) {}
+}
 
 module.exports = { Tree, Node };
