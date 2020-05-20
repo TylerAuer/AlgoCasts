@@ -11,6 +11,24 @@
 //    list.insertLast('d');
 //    fromLast(list, 2).data // 'b'
 
-function fromLast(list, n) {}
+function fromLast(list, n) {
+  // assume that n < length of list
+  let slow = list.head;
+  let fast = list.head;
+
+  // sets fast n ahead of slow
+  for (let i = 0; i < n; i++) {
+    fast = fast.next;
+  }
+
+  // loop until fast reaches the tail node
+  while (fast.next) {
+    slow = slow.next;
+    fast = fast.next;
+  }
+
+  // return slow which is n behind the tail node (where fast is now located)
+  return slow;
+}
 
 module.exports = fromLast;
