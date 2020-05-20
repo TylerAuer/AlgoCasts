@@ -33,11 +33,19 @@ class Tree {
   }
 
   traverseBF(fn) {
+    // An FILO array waiting to each node's data
+    // processed by the function passed as a parameter.
+    // Also, where each Node's children are placed after function runs
+    // on the data
     const queue = [this.root];
-    while (queue.length > 0) {
+    // While there are values in the queue
+    while (queue.length) {
+      // Grab the "first-in" node from queue
       const node = queue.shift();
+      // Apply the user's functions to the node
       fn(node);
-      node.children.forEach((child) => queue.push(child));
+      // Add of the node's children to the queue
+      queue.push(...node.children);
     }
   }
 
