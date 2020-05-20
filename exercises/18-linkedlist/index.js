@@ -127,6 +127,24 @@ class LinkedList {
       prevNode.next = prevNode.next.next;
     }
   }
+
+  insertAt(data, index) {
+    // Edge: empty list
+    if (!this.head) {
+      this.head = new Node(data);
+      return;
+    }
+
+    // Edge: index = 0
+    if (index === 0) {
+      this.insertFirst(data);
+      return;
+    }
+
+    // If prevNode is out of range, use lastElement
+    const prevNode = this.getAt(index - 1) || this.getLast();
+    prevNode.next = new Node(data, prevNode.next);
+  }
 }
 
 module.exports = { Node, LinkedList };
