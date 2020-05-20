@@ -40,12 +40,17 @@ class LinkedList {
 
   // returns last node in the linked list
   getLast() {
+    if (!this.head) {
+      return null;
+    }
+
     let node = this.head;
-    // runs while there is a next Node referenced in the current node
-    while (node.next != null) {
+    while (node) {
+      if (!node.next) {
+        return node;
+      }
       node = node.next;
     }
-    return node;
   }
 
   // empty list
@@ -80,12 +85,46 @@ class LinkedList {
     return;
   }
 
+  // insert value at end of list
   insertLast(data) {
     const last = this.getLast();
     if (last) {
       last.next = new Node(data);
     } else {
       this.head = new Node(data);
+    }
+  }
+
+  // return node at a given index
+  getAt(index) {
+    let counter = 0;
+    let node = this.head;
+
+    while (node) {
+      if (counter === index) {
+        return node;
+      }
+      counter++;
+      node = node.next;
+    }
+
+    return null;
+  }
+
+  // removes node at a given index
+  removeAt(index) {
+    if (!this.head) {
+      return null;
+    }
+
+    if (index === 0) {
+      this.head = this.head.next;
+      return;
+    }
+
+    const prevNode = this.getAt(index - 1);
+    if (prevNode && prevNode.next) {
+      prevNode.next = prevNode.next.next;
     }
   }
 }
