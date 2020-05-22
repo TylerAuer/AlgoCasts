@@ -3,17 +3,42 @@
 // Events class.  The Events class should
 // have methods 'on', 'trigger', and 'off'.
 
+/** TODO: Come back and retry this one. Apperently it is the most common
+ * interview question. So I should make sure that I better understand events.
+ * The implementation is pretty simple.
+ * */
 class Events {
+  constructor() {
+    this.events = {};
+  }
+
   // Register an event handler
-  on(eventName, callback) {}
+  on(eventName, callback) {
+    if (this.events[eventName]) {
+      this.events[eventName].push(callback);
+    } else {
+      this.events[eventName] = [callback];
+    }
+  }
 
   // Trigger all callbacks associated
   // with a given eventName
-  trigger(eventName) {}
+  trigger(eventName) {
+    if (this.events[eventName]) {
+      for (let callbackFn of this.events[eventName]) {
+        callbackFn();
+      }
+    }
+  }
 
   // Remove all event handlers associated
   // with the given eventName
-  off(eventName) {}
+  off(eventName) {
+    if (this.events[eventName]) {
+      // this.events[eventName] = []; // better to delete the property
+      delete this.events[eventName];
+    }
+  }
 }
 
 module.exports = Events;
