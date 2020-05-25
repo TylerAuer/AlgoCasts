@@ -2,19 +2,21 @@
 // Implement bubbleSort, selectionSort, and mergeSort
 
 function bubbleSort(arr) {
-
+  // First moves the largest value to the end, then the second-largest
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr.length - i - 1; j++) {
+      if (arr[j] > arr[j + 1]) {
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+      }
+    }
+  }
+  return arr;
 }
 
-function selectionSort(arr) {
+function selectionSort(arr) {}
 
-}
+function mergeSort(arr) {}
 
-function mergeSort(arr) {
-
-}
-
-function merge(left, right) {
-
-}
+function merge(left, right) {}
 
 module.exports = { bubbleSort, selectionSort, mergeSort, merge };
